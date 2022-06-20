@@ -1,0 +1,33 @@
+{
+  "name": "Capstone Project 2",
+  "version": "1.0.0",
+  "description": "This repository contains set up project using webpack.",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode development",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ulisesedu7/Webpack-Setup.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ulisesedu7/Webpack-Setup/issues"
+  },
+  "homepage": "https://github.com/ulisesedu7/Webpack-Setup#readme",
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.1"
+  },
+  "main": "webpack.config.js",
+  "dependencies": {
+    "jest": "^28.1.1"
+  }
+}

@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #ccc;
+  --secondary-color: #ddd;
+  --dark: rgba(85, 139, 187, 0.9);
+  --white: #fff;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*
+Ulises Styles
+*/
+
+
+/*
+Addisu Styles
+*/
+
