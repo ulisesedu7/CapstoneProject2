@@ -1,13 +1,21 @@
 import './style.css';
 
-const baseUrl = 'https://api.nasa.gov/planetary/apod?api_key=rN5IKM7FbnQBTTK5M0cENyNfFf1KjBE5OPiA94nf';
+const baseUrl = 'https://api.tvmaze.com/shows/';
 
 /*
 Ulises JS
 */
 import MainCards from './modules/add-cards.js';
 
-document.addEventListener('DOMContentLoaded', MainCards.displayCards(baseUrl));
+function loadAllCards () {
+  for(var i=0; i < 6; i++) {
+    let number = i + 7;
+    MainCards.displayCards(baseUrl, number)
+  } 
+}
+
+document.addEventListener('DOMContentLoaded', loadAllCards);
+
 
 /*
 Addisu JS
