@@ -1,7 +1,7 @@
 :root {
   --primary-color: #ccc;
   --secondary-color: #ddd;
-  --dark: rgba(85, 139, 187, 0.9);
+  --dark: rgba(0, 0, 0, 0.4);
   --white: #fff;
 }
 
@@ -15,8 +15,58 @@
 Ulises Styles
 */
 
-
 /*
 Addisu Styles
 */
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+}
+
+/* Popup window */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: auto;
+  background-color: var(--dark);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  border-radius: 17px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--dark);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* popup style */
+
+.showType {
+  text-align: center;
+}
+
+.show-title {
+  font-size: 2.3rem;
+  margin-top: 4rem;
+}
