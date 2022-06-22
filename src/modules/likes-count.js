@@ -1,23 +1,29 @@
-const iBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/:app_id/likes/';
+const likesId = 'Sukb2o3ILkdyrdEG0stQ';
 
-const sendLikesInfo = async (iBaseUrl, like) => {
-  const response = await fetch(iBaseUrl, {
-    method: 'POST',
-    body: JSON.stringify({
-      newLike: like,
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  });
-
-  const success = await response.json();
-  return success;
-};
-
-const receiveLikesInfo = async () => {
+class LikesInfo {
+  static sendLikesInfo = async (iBaseUrl, likes, item) => {
+    const response = await fetch(iBaseUrl, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: item,
+        likesAmount: likes,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
   
-};
+    const success = await response.json();
+    return success;
+  };
+  
+  static receiveLikesInfo = async (iBaseUrl) => {
+    const response = await fetch(iBaseUrl);
+    const result = await response.json();
+  
+    return result;
+  };
+}
 
 
-// export default changeLike;
+export default LikesInfo;
