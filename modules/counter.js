@@ -1,2 +1,2 @@
 const itemCount = (list) => list.length;
-module.export = itemCount;
+export default itemCount;

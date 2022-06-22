@@ -1,6 +1,5 @@
 # Capstone Project #2
 
-
 ## Built With
 
 - HTML
@@ -10,7 +9,9 @@
 - WebPack
 
 ## Live Demo
+
 - Check the live demo of my page [here]()
+
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
