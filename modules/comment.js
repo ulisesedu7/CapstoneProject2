@@ -1,4 +1,4 @@
-// import itemCount from './counter.js';
+import itemCount from './counter.js';
 import renderError from './error.js';
 
 // make comment
@@ -20,7 +20,6 @@ const makeComment = async (username, userComment, id) => {
         headers: {
           'Content-Type': 'application/json'
         },
-
         body: JSON.stringify(newComment)
       });
     }
@@ -32,8 +31,8 @@ const makeComment = async (username, userComment, id) => {
 };
 
 // Show all comments
-const showAllComments = async (showId) => {
-  const baseUrl = 'https://api.tvmaze.com/shows//comments?item_id=${showId }';
+const showAllComments = async () => {
+  const baseUrl = 'https://api.tvmaze.com/shows/comments?item_id=${showId}';
 
   let data;
 
@@ -53,29 +52,30 @@ const commentPopup = async (show) => {
   const commentButton = document.createElement('button');
   const allComments = document.createElement('ul');
   const showId = show.idShow;
+  const commentHeader = document.querySelector('.commentHeader');
 
   const showType = document.querySelector('#modal-content');
   showType.innerHTML += ` 
   <div class="showType">
-    <img src=${show.image} alt=${show.name} />
-    <h2 class="show-title">${show.name}</h2>
+    <img src=${show.image} alt=${show.title} />
+    <h2 class="show-title">${show.title}</h2>
     <div class="show-details">
       <ul>
-        <li>name</li>
-        <li>type</li>
-        <li>language</li>
-        <li>genres</li>
-        <li>status</li>
-        <li>runtime</li>
-        <li>premiered</li>
+        <li>${Title}</li>
+        <li>${Genres}</li>
+        <li>${Language}</li>
+        <li>${Status}</li>
+        <li>${Runtime}</li>
+        <li>${Priemer}</li>
       </ul>
     </div>
   
     <div class="comments">
-      <h3>Comments</h3>
+      <h3 class="commentHeader"></h3>
+      <ul class="allComments"></ul>
     </div>
 
-    <form method="post" id="popup-form">
+    <form method="post" id="comment-form" class="comment-form">
       <h3 class="formHeader">Add a comment</h3>
       <input type="text" placeholder="Your name" id="name" />
       <textarea
@@ -89,6 +89,48 @@ const commentPopup = async (show) => {
     </form>
   </div>`;
 
+  // make comments
+  commentButton.addEventListener('click', () => {
+    while (allComments.firstChild) {
+      allComments.removeChild(allComments.lastChild);
+    }
+    makeComment(showId).then(() => {
+      showAllComments(showId).then((data) => {
+        commentHeader.innerHTML = `Comments (${itemCount(data)})`;
+        data.forEach((insight) => {
+          const li = document.createElement('li');
+          li.append(
+            `${insight.creation_date} ${insight.username} ${insight.comment}`
+          );
+          allComments.append(li);
+        });
+      });
+    });
+  });
+
+  // showAllComments;
+
+  showAllComments(showId).then((data) => {
+    try {
+      if (data.error) {
+        commentHeader.innerHTML = `Comments (0)`;
+        allComments.innerHtML = `No comments yet! Add comments`;
+      } else {
+        commentHeader.innerHTML = `Comments (${itemCount(data)})`;
+        data.forEach((insight) => {
+          const li = document.createElement('li');
+          li.append(
+            `${insight.creation_date} ${insight.username} ${insight.comment}`
+          );
+          allComments.append(li);
+        });
+      }
+    } catch (err) {
+      renderError(err.message);
+    }
+  });
+
+  // close button
   document.getElementsByClassName('close')[0].addEventListener('click', () => {
     modal.style.display = 'none';
     modalContent.removeChild(showType);
