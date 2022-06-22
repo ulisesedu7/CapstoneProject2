@@ -4,7 +4,7 @@ import renderError from './error.js';
 // make comment
 const makeComment = async (username, userComment, id) => {
   const baseUrl =
-    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/id/comments/';
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments/';
 
   try {
     username = username.value;
@@ -34,7 +34,7 @@ const makeComment = async (username, userComment, id) => {
 // Show all comments
 const showAllComments = async () => {
   const baseUrl =
-    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/id/comments?item_id=${showId}';
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments?item_id=${showId}';
 
   let data;
 

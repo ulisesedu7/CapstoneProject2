@@ -22,7 +22,7 @@ const displayShows = (list) => {
       showsHolder.appendChild(showType);
     });
   } else {
-    showsHolder.innerHTML = `<p class="showsHolderErr">No shows yer for this number</p>`;
+    showsHolder.innerHTML = `<p class="showsHolderErr"> No shows yer for this number </p>`;
   }
 };
 
