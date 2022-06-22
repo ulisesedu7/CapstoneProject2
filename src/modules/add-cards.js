@@ -5,7 +5,15 @@ class MainCards {
     this.getInformation(baseUrl, number);
   }
 
-  static addCards ({name, image, media_type}) {
+  static getInformation (baseUrl, number) {
+    const numberStr = number.toString();
+    const newUrl = baseUrl + numberStr;
+    fetch(newUrl)
+    .then(response => response.json())
+    .then(result => this.addCards(result));
+  }
+
+  static addCards ({name, image}) {
     const newCard = document.createElement('article');
     newCard.classList.add('info-card');
 
@@ -14,7 +22,7 @@ class MainCards {
 
     <div class="card-title">
       <h2 class="card-title">${name}</h2>
-      <i class="fa-regular fa-heart like-icon"></i>
+      <i class="fa-regular fa-heart fa-2x like-icon"></i>
     </div>
 
     <p class="likes-counter">3 likes</p>
@@ -25,13 +33,6 @@ class MainCards {
     cardsSection.appendChild(newCard);
   }
 
-  static getInformation (baseUrl, number) {
-    const numberStr = number.toString();
-    const newUrl = baseUrl + numberStr;
-    fetch(newUrl)
-    .then(response => response.json())
-    .then(result => this.addCards(result));
-  }
 }
 
 export default MainCards;
