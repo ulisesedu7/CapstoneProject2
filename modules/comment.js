@@ -3,7 +3,8 @@ import renderError from './error.js';
 
 // make comment
 const makeComment = async (username, userComment, id) => {
-  const baseUrl = 'https://api.tvmaze.com/shows/';
+  const baseUrl =
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/id/comments/';
 
   try {
     username = username.value;
@@ -32,7 +33,8 @@ const makeComment = async (username, userComment, id) => {
 
 // Show all comments
 const showAllComments = async () => {
-  const baseUrl = 'https://api.tvmaze.com/shows/comments?item_id=${showId}';
+  const baseUrl =
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/id/comments?item_id=${showId}';
 
   let data;
 
@@ -113,8 +115,8 @@ const commentPopup = async (show) => {
   showAllComments(showId).then((data) => {
     try {
       if (data.error) {
-        commentHeader.innerHTML = `Comments (0)`;
-        allComments.innerHtML = `No comments yet! Add comments`;
+        commentHeader.innerHTML = 'Comments (0)';
+        allComments.innerHtML = 'No comments yet! Add comments';
       } else {
         commentHeader.innerHTML = `Comments (${itemCount(data)})`;
         data.forEach((insight) => {

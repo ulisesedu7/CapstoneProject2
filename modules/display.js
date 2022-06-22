@@ -2,7 +2,7 @@
 import renderError from './error.js';
 
 const baseUrl = 'https://api.tvmaze.com/shows/';
-const showsHolder = document.getElementById('showsHolder');
+// const showsHolder = document.getElementById('showsHolder');
 
 // display all shows
 const displayShows = () => {};
