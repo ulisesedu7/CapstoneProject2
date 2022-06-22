@@ -12,10 +12,12 @@ class MainCards {
     newCard.innerHTML = 
     `<img src="${image.medium}" class="card-image">
 
-    <div>
+    <div class="card-title">
       <h2 class="card-title">${name}</h2>
-      <input type="checkbox" class="likes">
+      <i class="fa-regular fa-heart like-icon"></i>
     </div>
+
+    <p class="likes-counter">3 likes</p>
 
     <button class="card-btn">Comments</button>
     <button class="card-btn">Reservation</button>`

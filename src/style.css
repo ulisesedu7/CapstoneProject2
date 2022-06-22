@@ -16,11 +16,11 @@ Ulises Styles
 */
 header {
   width: 100%;
-  margin: 1.2rem;
+  margin: 1.2rem 0;
 }
 
 .main-nav {
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .nav-list {
@@ -58,20 +58,27 @@ Card Styles --Ulises
 */
 #cards-section {
   display: grid;
-  width: 100%;
-  margin: 1.2rem;
+  margin: 1.2rem 0;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-flow: row;
 }
 
 .info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   justify-self: center;
 }
 
-/* .card-image {
-  height: 100px;
-  width: 100px;
-} */
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.likes-counter {
+  align-self: flex-end;
+}
+
 
 /*
 Addisu Styles
