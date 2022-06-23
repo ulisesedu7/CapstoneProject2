@@ -116,6 +116,9 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+<<<<<<< HEAD
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n/*\nUlises JS\n*/\n\n/*\nAddisu JS\n*/\n\n\n//# sourceURL=webpack://Capstone_Project_2/./src/index.js?");
+=======
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_add_cards_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/add-cards.js */ \"./src/modules/add-cards.js\");\n\r\n\r\nconst baseUrl = 'https://api.tvmaze.com/shows/';\r\n\r\n/*\r\nUlises JS\r\n*/\r\n\r\n\r\nfunction loadAllCards () {\r\n  for(var i=0; i < 6; i++) {\r\n    let number = i + 7;\r\n    _modules_add_cards_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"].displayCards(baseUrl, number)\r\n  } \r\n}\r\n\r\ndocument.addEventListener('DOMContentLoaded', loadAllCards);\r\n\r\n\r\n/*\r\nAddisu JS\r\n*/\r\n\n\n//# sourceURL=webpack://Capstone_Project_2/./src/index.js?");
 
 /***/ }),
@@ -127,6 +130,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst cardsSection = document.getElementById('cards-section');\r\n\r\nclass MainCards {\r\n  static displayCards (baseUrl, number) {\r\n    this.getInformation(baseUrl, number);\r\n  }\r\n\r\n  static addCards ({name, image, media_type}) {\r\n    const newCard = document.createElement('article');\r\n    newCard.classList.add('info-card');\r\n\r\n    newCard.innerHTML = \r\n    `<img src=\"${image.medium}\" class=\"card-image\">\r\n\r\n    <div>\r\n      <h2 class=\"card-title\">${name}</h2>\r\n      <i class=\"fa-regular fa-heart like-icon\"></i>\r\n    </div>\r\n\r\n    <button class=\"card-btn\">Comments</button>\r\n    <button class=\"card-btn\">Reservation</button>`\r\n\r\n    cardsSection.appendChild(newCard);\r\n  }\r\n\r\n  static getInformation (baseUrl, number) {\r\n    const numberStr = number.toString();\r\n    const newUrl = baseUrl + numberStr;\r\n    fetch(newUrl)\r\n    .then(response => response.json())\r\n    .then(result => this.addCards(result));\r\n  }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MainCards);\n\n//# sourceURL=webpack://Capstone_Project_2/./src/modules/add-cards.js?");
+>>>>>>> project-setup
 
 /***/ })
 

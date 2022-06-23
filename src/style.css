@@ -1,7 +1,7 @@
 :root {
   --primary-color: #ccc;
   --secondary-color: #ddd;
-  --dark: rgba(85, 139, 187, 0.9);
+  --dark: rgba(0, 0, 0, 0.4);
   --white: #fff;
 }
 
@@ -131,3 +131,159 @@ footer {
 Addisu Styles
 */
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+}
+
+#errorContainer {
+  display: flex;
+  font-size: 2rem;
+  opacity: 1;
+  transition: opacity 10s;
+  z-index: 1;
+}
+
+/* Popup window */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: auto;
+  background-color: var(--dark);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  border-radius: 17px;
+}
+
+/* close button */
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--dark);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* popup style */
+
+.showType {
+  border: 2px solid rgb(0, 0, 0);
+  margin: 10px 10px;
+}
+
+img {
+  margin-top: 10px;
+  width: 100%;
+  position: relative;
+}
+
+h2,
+h3 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  list-style-type: none;
+  padding: 10px;
+}
+
+li {
+  list-style-type: none;
+  margin: 0 32px;
+  color: rgb(13, 13, 13);
+  line-height: 2rem;
+}
+
+form {
+  align-items: flex-start;
+  padding: 32px;
+}
+
+.formHeader {
+  margin-bottom: 0.5rem;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin: auto;
+  border: solid 1px #333;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+input {
+  padding: 4px;
+}
+
+textarea {
+  height: 6rem;
+  padding: 6px;
+}
+
+button {
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  line-height: 0.7rem;
+  padding: 6px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  background-image: linear-gradient(
+    to right,
+    rgb(28, 110, 164) 0%,
+    rgb(35, 136, 203) 50%,
+    rgb(20, 78, 117) 100%
+  );
+  box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
+  border: 2px solid rgb(28, 110, 164);
+}
+
+button:hover {
+  background: #1c6ea4;
+}
+
+button:active {
+  background: #144e75;
+}
+
+.showsHolderErr {
+  color: red;
+  height: 45vh;
+  text-align: center;
+  font-size: 1.5rem;
+}
