@@ -47,28 +47,28 @@ const showAllComments = async (showId) => {
   return data;
 };
 
-const commentPopup = async (show) => {
+const commentPopup = async ({name, image, type, language, status, runtime, premiered}) => {
   const modal = document.getElementById('myModal');
-  const modalContent = document.getElementById('modal-content');
+  const modalContent = document.getElementById('modal-container');
   const commentButton = document.createElement('button');
   const allComments = document.createElement('ul');
-  const showId = show.idShow;
+  const showId = 13;
   const commentHeader = document.querySelector('.commentHeader');
 
   const showType = document.querySelector('#modal-content');
   showType.innerHTML += ` 
     <div class="showType">
-      <img src='image' alt="Movie-poster" />
+      <img src="${image.original}" alt="Movie-poster" />
       <span class="close">&times;</span>
-      <h2 class="show-title">Show Title</h2>
+      <h2 class="show-title">${name}</h2>
       <div class="show-details">
         <ul>
-        <li>name:</li>
-        <li>type:</li>
-        <li>language:</li>
-        <li>status:</li>
-        <li>runtime:</li>
-        <li>premiered:</li>
+        <li>Name: ${name}</li>
+        <li>Type: ${type}</li>
+        <li>Language: ${language}</li>
+        <li>Status: ${status}</li>
+        <li>Runtime: ${runtime}</li>
+        <li>Premiered: ${premiered}</li>
         </ul>
       </div>
 

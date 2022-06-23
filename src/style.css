@@ -1,7 +1,7 @@
 :root {
   --primary-color: #ccc;
   --secondary-color: #ddd;
-  --dark: rgba(0, 0, 0, 0.4);
+  --dark: rgba(110, 104, 104, 0.4);
   --white: #fff;
 }
 
@@ -145,35 +145,57 @@ body {
 }
 
 /* Popup window */
-
 .modal {
-  display: none;
   position: fixed;
+  height: 100%;
+  width: 100vw;
   z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  overflow: auto;
   background-color: var(--dark);
+  opacity: 0;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  overflow: scroll;
 }
 
-.modal-content {
+.modal.show {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.modal-container {
   background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
+  margin: 2rem auto;
+  padding: 1.4rem;
   border: 1px solid #888;
-  width: 50%;
   border-radius: 17px;
 }
 
-/* close button */
+/* popup style */
+.showType {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(0, 0, 0);
+  margin: 10px 10px;
+}
 
+.main-img-popup {
+  margin-bottom: 1.2rem;
+  width: 400px;
+  height: 550px;
+}
+
+/* close button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
+  align-self: flex-end;
+  color: rgb(58, 58, 58);
+  font-size: 50px;
   font-weight: bold;
   margin-right: 10px;
+
 }
 
 .close:hover,
@@ -181,19 +203,6 @@ body {
   color: var(--dark);
   text-decoration: none;
   cursor: pointer;
-}
-
-/* popup style */
-
-.showType {
-  border: 2px solid rgb(0, 0, 0);
-  margin: 10px 10px;
-}
-
-img {
-  margin-top: 10px;
-  width: 100%;
-  position: relative;
 }
 
 h2,

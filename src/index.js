@@ -1,4 +1,5 @@
 import './style.css';
+import commentPopup from './modules/comment.js';
 
 const baseUrl = 'https://api.tvmaze.com/shows/';
 
@@ -52,6 +53,16 @@ cardsContainer.addEventListener('click', (e) => {
     e.target.classList.add('fa-solid');
 
 
+  }
+
+
+  // Function to display Modal Window
+  if (e.target.classList.contains('comments-popup') === true) {
+    
+    MainCards.getPopUpInfo(baseUrl, 13);
+
+    const commentPopUp = document.querySelector('.modal');
+    commentPopUp.classList.add('show');
   }
 
 });
