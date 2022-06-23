@@ -59,19 +59,18 @@ const commentPopup = async (show) => {
   const showType = document.querySelector('#modal-content');
   showType.innerHTML += ` 
     <div class="showType">
-      <div class="headerImg">
-      <img src="../images/The-lord-of-the-ring.jpeg" alt="Movie-poster" />
-        <span class="close">&times;</span>
-      </div>
-      <h2 class="show-title">Show Title</h2>
-      <div class="show-details">
+      <img src="../images/Addisu.jpg" alt="Movie-poster" />
+      <span class="close">&times;</span>
+
+      <h2 class="show-title">Show Title</h2>å
+      <div class="show-details">åå
         <ul>
-          <li>Title: </li>
-          <li>Genres: </li>
-          <li>Language: </li>
-          <li>Status: </li>
-          <li>Runtime: </li>
-          <li>Rating: </li>
+          <li>Title:</li>
+          <li>Genres:</li>
+          <li>Language:</li>
+          <li>Status:</li>
+          <li>Runtime:</li>
+          <li>Rating:</li>
         </ul>
       </div>
 
@@ -82,7 +81,7 @@ const commentPopup = async (show) => {
 
       <form method="post" id="comment-form" class="comment-form">
         <h3 class="formHeader">Add a comment</h3>
-        <div class='contact'>
+        <div class="contact">
           <input type="text" placeholder="Your name" id="name" />
           <textarea
             name="comment"
