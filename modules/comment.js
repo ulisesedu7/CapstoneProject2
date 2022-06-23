@@ -1,6 +1,6 @@
 import itemCount from './counter.js';
 import renderError from './error.js';
-import Icon from '../images/Addisu.jpg';
+import Icon from '../images/LordRing.jpeg';
 
 // make comment
 const makeComment = async (username, userComment, id) => {
@@ -59,9 +59,8 @@ const commentPopup = async (show) => {
   const showType = document.querySelector('#modal-content');
   showType.innerHTML += ` 
     <div class="showType">
-      <img src="../images/Addisu.jpg" alt="Movie-poster" />
+      <img src="../images/LordRing.jpeg" alt="Movie-poster" />
       <span class="close">&times;</span>
-
       <h2 class="show-title">Show Title</h2>å
       <div class="show-details">åå
         <ul>
