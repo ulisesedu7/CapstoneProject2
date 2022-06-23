@@ -8,6 +8,7 @@ Ulises JS
 // Imports 
 import MainCards from './modules/add-cards.js';
 import LikesInfo from './modules/likes-count.js';
+import galaxyIcon from './assets/images/galaxyicon.png'
 
 // Const from DOM
 const cardsContainer = document.getElementById('cards-section');
