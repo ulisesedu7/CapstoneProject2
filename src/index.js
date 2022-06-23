@@ -16,6 +16,9 @@ const cardsContainer = document.getElementById('cards-section');
 const mainLogo = document.getElementById('main-logo');
 const iBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/likes/';
 
+const modalContainer = document.getElementById('myModal');
+const modalContent = document.querySelector('.modal-container')
+
 // Load first cards function
 function loadAllCards () {
   for(var i=0; i < 6; i++) {
@@ -46,12 +49,11 @@ cardsContainer.addEventListener('click', (e) => {
   if (e.target.classList.contains('fa-solid') === true) {
     e.target.classList.remove('fa-solid');
     e.target.classList.add('fa-regular');
-
+    
   } 
   else if (e.target.classList.contains('fa-regular') === true) {
     e.target.classList.remove('fa-regular');
     e.target.classList.add('fa-solid');
-
 
   }
 
@@ -59,12 +61,30 @@ cardsContainer.addEventListener('click', (e) => {
   // Function to display Modal Window
   if (e.target.classList.contains('comments-popup') === true) {
     
-    MainCards.getPopUpInfo(baseUrl, 13);
+    const posterId = e.target.id;
+
+    // console.log(posterId);
+
+    MainCards.getPopUpInfo(baseUrl, posterId);
 
     const commentPopUp = document.querySelector('.modal');
     commentPopUp.classList.add('show');
   }
 
+});
+
+
+// Function to Close the Modal
+modalContainer.addEventListener('click', (e) => {
+  if (e.target.classList.contains('close') === true) {
+    const commentPopUp = document.querySelector('.modal');
+    commentPopUp.classList.remove('show');
+
+    const showType = document.querySelector('.showType');
+
+    showType.remove();
+
+  }
 });
 
 /*

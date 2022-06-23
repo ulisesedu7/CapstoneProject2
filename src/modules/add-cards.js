@@ -12,10 +12,10 @@ class MainCards {
     const newUrl = baseUrl + numberStr;
     fetch(newUrl)
     .then(response => response.json())
-    .then(result => this.addCards(result));
+    .then(result => this.addCards(result, number));
   }
 
-  static addCards ({name, image}) {
+  static addCards ({name, image}, number) {
     const newCard = document.createElement('article');
     newCard.classList.add('info-card');
 
@@ -29,7 +29,7 @@ class MainCards {
 
     <p class="likes-counter">3 likes</p>
 
-    <button class="card-btn comments-popup">Comments</button>
+    <button class="card-btn comments-popup" id="${number}">Comments</button>
     <button class="card-btn">Reservation</button>`
 
     cardsSection.appendChild(newCard);
@@ -45,7 +45,7 @@ class MainCards {
 
   static addCommentPopUp({name, image, type, language, status, runtime, premiered}) {
     const PopUpSpace = document.getElementById('modal-content');
-    const commentPopUp = document.createElement('section');
+    const commentPopUp = document.createElement('div');
     commentPopUp.classList.add('showType');
 
     commentPopUp.innerHTML = `
