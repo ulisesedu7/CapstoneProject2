@@ -54,7 +54,7 @@ class MainCards {
       
       <h2 class="show-title">${name}</h2>
       <div class="show-details">
-        <ul>
+        <ul class="show-details-items">
         <li>Name: ${name}</li>
         <li>Type: ${type}</li>
         <li>Language: ${language}</li>
@@ -72,13 +72,14 @@ class MainCards {
       <form method="post" id="comment-form" class="comment-form">
         <h3 class="formHeader">Add a comment</h3>
         <div class="contact">
-          <input type="text" placeholder="Your name" id="name" />
+          <input type="text" placeholder="Your name" id="name" required/>
           <textarea
             name="comment"
             id="msg"
             cols="60"
             rows="10"
             placeholder="Your insights..."
+            required
           ></textarea>
           <button type="submit" class="btn btn-primary">Comment</button>
         </div>

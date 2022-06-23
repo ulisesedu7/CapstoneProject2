@@ -6,7 +6,6 @@ const makeComment = async (username, userComment, id) => {
   const baseUrl =
     'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments/';
 
-  try {
     username = username.value;
     userComment = userComment.value;
     if (username !== '' && userComment !== '') {
@@ -26,9 +25,6 @@ const makeComment = async (username, userComment, id) => {
     }
     document.getElementById('username').value = '';
     document.getElementById('userComment').value = '';
-  } catch (err) {
-    renderError(err.message);
-  }
 };
 
 // to show all comments
@@ -37,13 +33,10 @@ const showAllComments = async (showId) => {
 
   let data;
 
-  try {
     const request = await fetch(baseUrl);
     const response = await request.json();
     data = await response;
-  } catch (err) {
-    renderError(err.message);
-  }
+  
   return data;
 };
 
@@ -132,21 +125,6 @@ const commentPopup = async ({name, image, type, language, status, runtime, premi
       renderError(err.message);
     }
   });
-
-  // close button
-  document.getElementsByClassName('close')[0].addEventListener('click', () => {
-    modal.style.display = 'none';
-    modalContent.removeChild(showType);
-  });
-
-  window.onclick = (event) => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-      if (modalContent.hasChildNode) {
-        modalContent.removeChild(showType);
-      }
-    }
-  };
 };
 
 export default commentPopup;

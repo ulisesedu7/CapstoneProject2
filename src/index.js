@@ -1,5 +1,6 @@
 import './style.css';
-import commentPopup from './modules/comment.js';
+// import commentPopup from './modules/comment.js';
+import MainComments from './modules/comment-function.js';
 
 const baseUrl = 'https://api.tvmaze.com/shows/';
 
@@ -69,10 +70,22 @@ cardsContainer.addEventListener('click', (e) => {
 
     const commentPopUp = document.querySelector('.modal');
     commentPopUp.classList.add('show');
+
+    MainComments.showAllComments(posterId);
   }
 
 });
 
+const mainForm = document.getElementById('comment-form');
+
+mainForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const userName = document.getElementById('username').value;
+  const userComment = document.getElementById('userComment').value;
+
+  MainComments.makeComment(userName, userComment, posterId);
+})
 
 // Function to Close the Modal
 modalContainer.addEventListener('click', (e) => {

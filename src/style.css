@@ -211,7 +211,7 @@ h3 {
   text-align: center;
 }
 
-ul {
+.show-details-items {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
@@ -219,7 +219,7 @@ ul {
   padding: 10px;
 }
 
-li {
+.show-details-items li {
   list-style-type: none;
   margin: 0 32px;
   color: rgb(13, 13, 13);
