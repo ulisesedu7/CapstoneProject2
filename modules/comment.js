@@ -3,8 +3,7 @@ import renderError from './error.js';
 
 // make comment
 const makeComment = async (username, userComment, id) => {
-  const baseUrl =
-    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments/';
+  const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments/';
 
   try {
     username = username.value;
@@ -13,15 +12,15 @@ const makeComment = async (username, userComment, id) => {
       const newComment = {
         item_id: id,
         username,
-        comment: userComment
+        comment: userComment,
       };
 
       await fetch(baseUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newComment)
+        body: JSON.stringify(newComment),
       });
     }
     document.getElementById('username').value = '';
@@ -32,9 +31,8 @@ const makeComment = async (username, userComment, id) => {
 };
 
 // Show all comments
-const showAllComments = async () => {
-  const baseUrl =
-    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments?item_id=${showId}';
+const showAllComments = async (showId) => {
+  const baseUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments?item_id=${showId}`;
 
   let data;
 
@@ -58,38 +56,43 @@ const commentPopup = async (show) => {
 
   const showType = document.querySelector('#modal-content');
   showType.innerHTML += ` 
-  <div class="showType">
-    <img src=${show.image} alt=${show.title} />
-    <h2 class="show-title">${show.title}</h2>
-    <div class="show-details">
-      <ul>
-        <li>${Title}</li>
-        <li>${Genres}</li>
-        <li>${Language}</li>
-        <li>${Status}</li>
-        <li>${Runtime}</li>
-        <li>${Priemer}</li>
-      </ul>
-    </div>
-  
-    <div class="comments">
-      <h3 class="commentHeader"></h3>
-      <ul class="allComments"></ul>
-    </div>
+    <div class="showType">
+      <div class="headerImg">
+      <img src="../images/The-lord-of-the-ring.jpeg" alt="Movie-poster" />
+        <span class="close">&times;</span>
+      </div>
+      <h2 class="show-title">Show Title</h2>
+      <div class="show-details">
+        <ul>
+          <li>Title: </li>
+          <li>Genres: </li>
+          <li>Language: </li>
+          <li>Status: </li>
+          <li>Runtime: </li>
+          <li>Rating: </li>
+        </ul>
+      </div>
 
-    <form method="post" id="comment-form" class="comment-form">
-      <h3 class="formHeader">Add a comment</h3>
-      <input type="text" placeholder="Your name" id="name" />
-      <textarea
-        name="comment"
-        id="msg"
-        cols="60"
-        rows="10"
-        placeholder="Your insights..."
-      ></textarea>
-      <button type="submit" class="btn btn-primary">Comment</button>
-    </form>
-  </div>`;
+      <div class="comments">
+        <h3 class="commentHeader"></h3>
+        <ul class="allComments"></ul>
+      </div>
+
+      <form method="post" id="comment-form" class="comment-form">
+        <h3 class="formHeader">Add a comment</h3>
+        <div class='contact'>
+          <input type="text" placeholder="Your name" id="name" />
+          <textarea
+            name="comment"
+            id="msg"
+            cols="60"
+            rows="10"
+            placeholder="Your insights..."
+          ></textarea>
+          <button type="submit" class="btn btn-primary">Comment</button>
+        </div>
+      </form>
+    </div>`;
 
   // make comments
   commentButton.addEventListener('click', () => {
@@ -102,7 +105,7 @@ const commentPopup = async (show) => {
         data.forEach((insight) => {
           const li = document.createElement('li');
           li.append(
-            `${insight.creation_date} ${insight.username} ${insight.comment}`
+            `${insight.creation_date} ${insight.username} ${insight.comment}`,
           );
           allComments.append(li);
         });
@@ -122,7 +125,7 @@ const commentPopup = async (show) => {
         data.forEach((insight) => {
           const li = document.createElement('li');
           li.append(
-            `${insight.creation_date} ${insight.username} ${insight.comment}`
+            `${insight.creation_date} ${insight.username} ${insight.comment}`,
           );
           allComments.append(li);
         });

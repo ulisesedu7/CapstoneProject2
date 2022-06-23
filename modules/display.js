@@ -2,7 +2,7 @@ import itemCount from './counter.js';
 import commentPopup from './comment.js';
 import renderError from './error.js';
 
-const baseUrl = 'https://api.tvmaze.com/shows/1';
+const baseUrl = 'https://api.tvmaze.com/shows/';
 const showsHolder = document.getElementById('showsHolder');
 
 // display all shows
@@ -22,7 +22,7 @@ const displayShows = (list) => {
       showsHolder.appendChild(showType);
     });
   } else {
-    showsHolder.innerHTML = `<p class="showsHolderErr"> No shows yer for this number </p>`;
+    showsHolder.innerHTML = '<p class="showsHolderErr"> No shows yer for this number </p>';
   }
 };
 

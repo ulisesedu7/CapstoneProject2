@@ -7,24 +7,10 @@
     <title>Capstone Project - 2</title>
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <!-- <a><img src="../images/galaxy-icon.png" /></a> -->
-          </li>
-          <li><a>Planets</a></li>
-          <li><a>Stars</a></li>
-          <li><a>Galaxies</a></li>
-        </ul>
-      </nav>
-    </header>
-
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close">&times;</span>
         <button class="comments-btn">Comments</button>
         <div id="modal-content"></div>
       </div>
@@ -35,8 +21,44 @@
       <section id="cards-section">
         <div id="errorContainer"></div>
         <div id="showsHolder" class="showsHolder"></div>
-        <button class="comments-btn">Comments</button>
       </section>
+
+      <div class="showType">
+        <img src="../images/The-lord-of-the-ring.jpeg" alt="Movie-poster" />
+        <span class="close">&times;</span>
+
+        <h2 class="show-title">Show Title</h2>
+        <div class="show-details">
+          <ul>
+            <li>Title:</li>
+            <li>Genres:</li>
+            <li>Language:</li>
+            <li>Status:</li>
+            <li>Runtime:</li>
+            <li>Rating:</li>
+          </ul>
+        </div>
+
+        <div class="comments">
+          <h3 class="commentHeader"></h3>
+          <ul class="allComments"></ul>
+        </div>
+
+        <form method="post" id="comment-form" class="comment-form">
+          <h3 class="formHeader">Add a comment</h3>
+          <div class="contact">
+            <input type="text" placeholder="Your name" id="name" />
+            <textarea
+              name="comment"
+              id="msg"
+              cols="60"
+              rows="10"
+              placeholder="Your insights..."
+            ></textarea>
+            <button type="submit" class="btn btn-primary">Comment</button>
+          </div>
+        </form>
+      </div>
     </main>
 
     <footer>
