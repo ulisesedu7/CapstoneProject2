@@ -1,6 +1,5 @@
 import itemCount from './counter.js';
 import renderError from './error.js';
-import Icon from '../images/LordRing.jpeg';
 
 // make comments
 const makeComment = async (username, userComment, id) => {
@@ -93,17 +92,6 @@ const commentPopup = async (show) => {
         </div>
       </form>
     </div>`;
-
-  // Add the image to existing div
-  const component = () => {
-    const element = document.querySelector('showType');
-    const myIcon = new Image();
-    myIcon.src = Icon;
-    element.appendChild(myIcon);
-    return element;
-  };
-
-  document.body.appendChild(component());
 
   // show comments
   commentButton.addEventListener('click', () => {
