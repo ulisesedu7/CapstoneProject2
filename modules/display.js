@@ -2,7 +2,7 @@ import itemCount from './counter.js';
 import commentPopup from './comment.js';
 import renderError from './error.js';
 
-const baseUrl = 'https://api.tvmaze.com/shows/';
+const baseUrl = 'https://api.tvmaze.com/shows/7';
 const showsHolder = document.getElementById('showsHolder');
 
 // display all shows
@@ -22,7 +22,8 @@ const displayShows = (list) => {
       showsHolder.appendChild(showType);
     });
   } else {
-    showsHolder.innerHTML = '<p class="showsHolderErr"> No shows yer for this number </p>';
+    showsHolder.innerHTML =
+      '<p class="showsHolderErr"> No shows yet for this number </p>';
   }
 };
 
@@ -32,7 +33,7 @@ const fetchShows = async () => {
     const request = await fetch(baseUrl);
     if (!request.ok) throw new Error('Something went wrong. Try again');
     const response = await request.json();
-    displayShows(response.shows);
+    displayShows(response.show);
   } catch (err) {
     renderError(err.message);
   }

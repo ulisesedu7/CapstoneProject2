@@ -59,17 +59,17 @@ const commentPopup = async (show) => {
   const showType = document.querySelector('#modal-content');
   showType.innerHTML += ` 
     <div class="showType">
-      <img src="../images/LordRing.jpeg" alt="Movie-poster" />
+      <img src='image' alt="Movie-poster" />
       <span class="close">&times;</span>
       <h2 class="show-title">Show Title</h2>
       <div class="show-details">
         <ul>
-          <li>Title:</li>
-          <li>Genres:</li>
-          <li>Language:</li>
-          <li>Status:</li>
-          <li>Runtime:</li>
-          <li>Rating:</li>
+        <li>name:</li>
+        <li>type:</li>
+        <li>language:</li>
+        <li>status:</li>
+        <li>runtime:</li>
+        <li>premiered:</li>
         </ul>
       </div>
 
