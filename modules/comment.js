@@ -2,7 +2,7 @@ import itemCount from './counter.js';
 import renderError from './error.js';
 import Icon from '../images/LordRing.jpeg';
 
-// make comment
+// make comments
 const makeComment = async (username, userComment, id) => {
   const baseUrl =
     'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments/';
@@ -32,7 +32,7 @@ const makeComment = async (username, userComment, id) => {
   }
 };
 
-// Show all comments
+// to show all comments
 const showAllComments = async (showId) => {
   const baseUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments?item_id=${showId}`;
 
@@ -61,8 +61,8 @@ const commentPopup = async (show) => {
     <div class="showType">
       <img src="../images/LordRing.jpeg" alt="Movie-poster" />
       <span class="close">&times;</span>
-      <h2 class="show-title">Show Title</h2>å
-      <div class="show-details">åå
+      <h2 class="show-title">Show Title</h2>
+      <div class="show-details">
         <ul>
           <li>Title:</li>
           <li>Genres:</li>
@@ -96,7 +96,7 @@ const commentPopup = async (show) => {
 
   // Add the image to existing div
   const component = () => {
-    const element = document.createElement('div');
+    const element = document.querySelector('showType');
     const myIcon = new Image();
     myIcon.src = Icon;
     element.appendChild(myIcon);
@@ -105,7 +105,7 @@ const commentPopup = async (show) => {
 
   document.body.appendChild(component());
 
-  // make comments
+  // show comments
   commentButton.addEventListener('click', () => {
     while (allComments.firstChild) {
       allComments.removeChild(allComments.lastChild);
@@ -125,12 +125,11 @@ const commentPopup = async (show) => {
   });
 
   // showAllComments;
-
   showAllComments(showId).then((data) => {
     try {
       if (data.error) {
         commentHeader.innerHTML = 'Comments (0)';
-        allComments.innerHtML = 'No comments yet! Add comments';
+        allComments.innerHTML = 'No comments yet! Add comments';
       } else {
         commentHeader.innerHTML = `Comments (${itemCount(data)})`;
         data.forEach((insight) => {
