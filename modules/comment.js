@@ -1,9 +1,11 @@
 import itemCount from './counter.js';
 import renderError from './error.js';
+import Icon from '../images/Addisu.jpg';
 
 // make comment
 const makeComment = async (username, userComment, id) => {
-  const baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments/';
+  const baseUrl =
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments/';
 
   try {
     username = username.value;
@@ -12,15 +14,15 @@ const makeComment = async (username, userComment, id) => {
       const newComment = {
         item_id: id,
         username,
-        comment: userComment,
+        comment: userComment
       };
 
       await fetch(baseUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(newComment),
+        body: JSON.stringify(newComment)
       });
     }
     document.getElementById('username').value = '';
@@ -94,6 +96,17 @@ const commentPopup = async (show) => {
       </form>
     </div>`;
 
+  // Add the image to existing div
+  const component = () => {
+    const element = document.createElement('div');
+    const myIcon = new Image();
+    myIcon.src = Icon;
+    element.appendChild(myIcon);
+    return element;
+  };
+
+  document.body.appendChild(component());
+
   // make comments
   commentButton.addEventListener('click', () => {
     while (allComments.firstChild) {
@@ -105,7 +118,7 @@ const commentPopup = async (show) => {
         data.forEach((insight) => {
           const li = document.createElement('li');
           li.append(
-            `${insight.creation_date} ${insight.username} ${insight.comment}`,
+            `${insight.creation_date} ${insight.username} ${insight.comment}`
           );
           allComments.append(li);
         });
@@ -125,7 +138,7 @@ const commentPopup = async (show) => {
         data.forEach((insight) => {
           const li = document.createElement('li');
           li.append(
-            `${insight.creation_date} ${insight.username} ${insight.comment}`,
+            `${insight.creation_date} ${insight.username} ${insight.comment}`
           );
           allComments.append(li);
         });

@@ -76,12 +76,12 @@ body {
 .showType {
   border: 2px solid rgb(0, 0, 0);
   margin: 10px 10px;
-  overflow: hidden;
 }
 
 img {
   margin-top: 10px;
   width: 100%;
+  position: relative;
 }
 
 h2,
@@ -95,7 +95,6 @@ ul {
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   list-style-type: none;
-  margin-top: 16px;
   padding: 10px;
 }
 
@@ -103,6 +102,7 @@ li {
   list-style-type: none;
   margin: 0 32px;
   color: rgb(13, 13, 13);
+  line-height: 2rem;
 }
 
 form {
