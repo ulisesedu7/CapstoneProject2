@@ -12,13 +12,27 @@ import MainCards from './modules/add-cards.js';
 import LikesInfo from './modules/likes-count.js';
 import galaxyIcon from './assets/images/galaxyicon.png'
 
+// Get Involvement API
+const newAppApiShow = async () => {
+
+  const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps', {
+    method: 'POST',
+  });
+
+  console.log(response);
+
+  const apID = await response.json();
+  return apID;
+
+}
+newAppApiShow();
+
+
 // Const from DOM
 const cardsContainer = document.getElementById('cards-section');
 const mainLogo = document.getElementById('main-logo');
-const iBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/likes/';
 
 const modalContainer = document.getElementById('myModal');
-const modalContent = document.querySelector('.modal-container')
 
 // Load first cards function
 function loadAllCards () {
@@ -46,15 +60,26 @@ class LikesPerObject {
 
 // Function to change heart color
 cardsContainer.addEventListener('click', (e) => {
+  
 
   if (e.target.classList.contains('fa-solid') === true) {
+    let likeId = e.target.parentElement.nextElementSibling.title;
+    console.log(likeId);
+
     e.target.classList.remove('fa-solid');
     e.target.classList.add('fa-regular');
     
   } 
   else if (e.target.classList.contains('fa-regular') === true) {
+
+    let likeId = e.target.parentElement.nextElementSibling.title;
+    console.log(likeId);
+
     e.target.classList.remove('fa-regular');
     e.target.classList.add('fa-solid');
+
+    // Send New Like 
+    LikesInfo.sendLikesInfo(likeId)
 
   }
 
@@ -71,21 +96,12 @@ cardsContainer.addEventListener('click', (e) => {
     const commentPopUp = document.querySelector('.modal');
     commentPopUp.classList.add('show');
 
-    MainComments.showAllComments(posterId);
+    // MainComments.showAllComments(posterId);
+    
   }
 
 });
 
-const mainForm = document.getElementById('comment-form');
-
-mainForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  const userName = document.getElementById('username').value;
-  const userComment = document.getElementById('userComment').value;
-
-  MainComments.makeComment(userName, userComment, posterId);
-})
 
 // Function to Close the Modal
 modalContainer.addEventListener('click', (e) => {
@@ -98,7 +114,29 @@ modalContainer.addEventListener('click', (e) => {
     showType.remove();
 
   }
+
+  if (e.target.classList.contains('btn-comment') === true) {
+     const mainForm = document.getElementById('comment-form');
+
+    mainForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+    });
+
+    const userName = document.getElementById('username').value;
+    const userComment = document.getElementById('userComment').value;
+    const posterId = e.target.name;
+
+    console.log(posterId)
+
+    if (userName !== '' && userComment !== '') {
+
+      console.log(userName);
+
+      console.log(MainComments.makeComment(userName, userComment, posterId));
+    }
+  }
 });
+
 
 /*
 Addisu JS

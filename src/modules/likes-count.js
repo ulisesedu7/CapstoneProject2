@@ -1,15 +1,14 @@
 const likesId = 'Sukb2o3ILkdyrdEG0stQ';
 
 class LikesInfo {
-  static sendLikesInfo = async (iBaseUrl, likes, item) => {
-    const response = await fetch(iBaseUrl, {
+  static sendLikesInfo = async (id) => {
+    const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/yiF2R8ciVWjovqKObXPN/likes/', {
       method: 'POST',
       body: JSON.stringify({
-        item_id: item,
-        likesAmount: likes,
+        item_id: id,
       }),
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        'Content-type': 'application/json',
       },
     });
   

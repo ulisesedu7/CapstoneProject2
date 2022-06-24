@@ -242,8 +242,8 @@ form {
   justify-content: center;
 }
 
-input,
-textarea {
+#username,
+#userComment {
   width: 100%;
   margin: auto;
   border: solid 1px #333;
@@ -251,16 +251,16 @@ textarea {
   margin-bottom: 1rem;
 }
 
-input {
+#username {
   padding: 4px;
 }
 
-textarea {
+#userComment {
   height: 6rem;
   padding: 6px;
 }
 
-button {
+.btn-comment {
   color: rgb(255, 255, 255);
   font-size: 12px;
   line-height: 0.7rem;

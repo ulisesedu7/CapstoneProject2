@@ -12,23 +12,35 @@ class NewComments {
 }
 
 class MainComments {
+  static newAppApiShow = async () => {
+
+    const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps', {
+      method: 'POST',
+    });
+
+    const apID = await response.json();
+    return apID;
+
+  }
+
   static makeComment = async (Name, Comment, id) => {
     const baseUrl =
-    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments/';
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments';
     
-    // Object
-    if (Name !== '' && Comment !== '') {
-      const newComment = new NewComments(id, Name, Comment);
+    const response = await fetch(baseUrl, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify({
+        item_id: id,
+        username: Name,
+        comment: Comment,
+      }),
+    });
 
-      await fetch(baseUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newComment)
-      });
-    }
-  
+    const success = await response.json();
+    return success;
   }
 
   static showAllComments = async (posterId) => {
@@ -42,7 +54,7 @@ class MainComments {
     const response = await request.json();
     data = response;
   
-    if (data === 0) {
+    if (data === null) {
       commentHeader.innerHTML = 'Comments (0)';
       allComments.innerHTML = 'No comments yet! Add comments';
     } else {

@@ -27,7 +27,7 @@ class MainCards {
       <i class="fa-regular fa-heart fa-2x like-icon"></i>
     </div>
 
-    <p class="likes-counter">3 likes</p>
+    <p class="likes-counter" title="${number}">3 likes</p>
 
     <button class="card-btn comments-popup" id="${number}">Comments</button>
     <button class="card-btn">Reservation</button>`
@@ -40,10 +40,10 @@ class MainCards {
     const newUrl = baseUrl + numberStr;
 
     fetch(newUrl).then(response => response.json())
-    .then(result => this.addCommentPopUp(result));
+    .then(result => this.addCommentPopUp(result, number));
   }
 
-  static addCommentPopUp({name, image, type, language, status, runtime, premiered}) {
+  static addCommentPopUp({name, image, type, language, status, runtime, premiered}, number) {
     const PopUpSpace = document.getElementById('modal-content');
     const commentPopUp = document.createElement('div');
     commentPopUp.classList.add('showType');
@@ -69,19 +69,19 @@ class MainCards {
         <ul class="allComments"></ul>
       </div>
 
-      <form method="post" id="comment-form" class="comment-form">
+      <form id="comment-form" class="comment-form">
         <h3 class="formHeader">Add a comment</h3>
         <div class="contact">
-          <input type="text" placeholder="Your name" id="name" required/>
+          <input type="text" placeholder="Your name" id="username" required/>
           <textarea
             name="comment"
-            id="msg"
+            id="userComment"
             cols="60"
             rows="10"
             placeholder="Your insights..."
             required
           ></textarea>
-          <button type="submit" class="btn btn-primary">Comment</button>
+          <button type="submit" class="btn btn-comment" name="${number}">Comment</button>
         </div>
       </form>    
     `
