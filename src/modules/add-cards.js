@@ -1,4 +1,5 @@
 import commentPopup from './comment.js';
+import LikesInfo from './likes-count.js';
 
 const cardsSection = document.getElementById('cards-section');
 
@@ -19,6 +20,7 @@ class MainCards {
     const newCard = document.createElement('article');
     newCard.classList.add('info-card');
 
+
     newCard.innerHTML = 
     `<img src="${image.medium}" class="card-image">
 
@@ -27,7 +29,7 @@ class MainCards {
       <i class="fa-regular fa-heart fa-2x like-icon"></i>
     </div>
 
-    <p class="likes-counter" title="${number}">3 likes</p>
+    <p class="likes-counter" title="${number}">0 likes</p>
 
     <button class="card-btn comments-popup" id="${number}">Comments</button>
     <button class="card-btn">Reservation</button>`

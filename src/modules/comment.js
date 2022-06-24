@@ -1,5 +1,5 @@
 import itemCount from './counter.js';
-import renderError from './error.js';
+// import renderError from './error.js';
 
 // make comments
 const makeComment = async (username, userComment, id) => {

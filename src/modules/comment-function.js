@@ -2,30 +2,17 @@ import itemCount from "./counter.js";
 
 const userName = document.getElementById('username');
 const userComment = document.getElementById('userComment');
-
-class NewComments {
-  constructor(item_id, username, userComment) {
-    this.item_id = item_id;
-    this.username = username;
-    this.comment = userComment;
-  }
-}
-
 class MainComments {
-  static newAppApiShow = async () => {
-
-    const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps', {
+  static newAppApiShow() {
+    fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps', {
       method: 'POST',
-    });
-
-    const apID = await response.json();
-    return apID;
-
+    }).then(response => response.text())
+    .then(result => console.log(result))
   }
 
   static makeComment = async (Name, Comment, id) => {
     const baseUrl =
-    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments';
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/comments';
     
     const response = await fetch(baseUrl, {
       method: 'POST',
@@ -39,12 +26,12 @@ class MainComments {
       }),
     });
 
-    const success = await response.json();
+    const success = await response.text();
     return success;
   }
 
   static showAllComments = async (posterId) => {
-    const baseUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Sukb2o3ILkdyrdEG0stQ/comments?item_id=${posterId}`;
+    const baseUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/comments?item_id=${posterId}`;
     const allComments = document.querySelector('allComments');
     const commentHeader  = document.querySelector('commentHeader');
 
