@@ -44,10 +44,7 @@ mainLogo.appendChild(myLogo);
 
 // Function to change heart color
 cardsContainer.addEventListener('click', (e) => {
-  if (e.target.classList.contains('fa-solid') === true) {
-    e.target.classList.remove('fa-solid');
-    e.target.classList.add('fa-regular');
-  } else if (e.target.classList.contains('fa-regular') === true) {
+  if (e.target.classList.contains('fa-regular') === true) {
     const likeId = e.target.parentElement.nextElementSibling.title;
 
     e.target.classList.remove('fa-regular');
@@ -57,6 +54,10 @@ cardsContainer.addEventListener('click', (e) => {
     LikesInfo.sendLikesInfo(iBaseUrl, likeId);
 
     // Update Likes Info
+    LikesInfo.receiveLikesInfo(iBaseUrl);
+  }
+
+  if (e.target.classList.contains('like-icon') === true) {
     LikesInfo.receiveLikesInfo(iBaseUrl);
   }
 
