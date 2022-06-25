@@ -99,6 +99,20 @@ class MainCards {
   // Show all Comments once the Pop Up appears
   MainComments.showAllComments(cBaseUrl, number);
 
+  const mainForm = document.getElementById('comment-form');
+  const userName = document.getElementById('user-name');
+  const userComment = document.getElementById('user-comment');
+
+  mainForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (userName !== '' && userComment !== '') {
+      MainComments.makeComment(cBaseUrl, userName.value, userComment.value, number);
+    }
+
+    MainComments.showAllComments(cBaseUrl, number);
+
+  });
+
   }
 
 }

@@ -65,6 +65,7 @@ class MainComments {
         commentHeader.textContent = `Comments (${commentsNumber})`;
       }
     });
+
   }
 
   static displayComments ({creation_date, username, comment}) {

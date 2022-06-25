@@ -11,7 +11,8 @@ Ulises JS
 // Imports 
 import MainCards from './modules/add-cards.js';
 import LikesInfo from './modules/likes-count.js';
-import galaxyIcon from './assets/images/galaxyicon.png'
+import galaxyIcon from './assets/images/galaxyicon.png';
+import showsCounter from './modules/shows-counter.js';
 
 // Const from DOM
 const cardsContainer = document.getElementById('cards-section');
@@ -23,13 +24,11 @@ const modalContainer = document.getElementById('myModal');
 function loadAllCards () {
   const numberOfShows = 9;
   for(var i=0; i < numberOfShows; i++) {
-    let number = i + 8;
+    let number = i+6;
     MainCards.displayCards(baseUrl, number)
   } 
 
-  const tvShowsCounter = document.getElementById('tv-counter');
-
-  tvShowsCounter.innerHTML = 'TV Shows (' + numberOfShows + ')';
+  showsCounter();
 }
 
 document.addEventListener('DOMContentLoaded', loadAllCards);
@@ -92,19 +91,16 @@ modalContainer.addEventListener('click', (e) => {
   }
 
   if (e.target.classList.contains('btn-comment') === true) {
-     const mainForm = document.getElementById('comment-form');
+    const mainForm = document.getElementById('comment-form');
+    const userName = document.getElementById('user-name');
+    const userComment = document.getElementById('user-comment');
+    const posterId = e.target.name;
 
     mainForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (userName !== '' && userComment !== '') {
+        MainComments.makeComment(cBaseUrl, userName.value, userComment.value, posterId);
+      }
     });
-
-    const userName = document.getElementById('user-name').value;
-    const userComment = document.getElementById('user-comment').value;
-    const posterId = e.target.name;
-
-    if (userName !== '' && userComment !== '') {
-      MainComments.makeComment(cBaseUrl, userName, userComment, posterId);
-
-    }
   }
 });

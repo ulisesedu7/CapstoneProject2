@@ -1,7 +1,6 @@
-import showCount from '../modules/counter.js';
+import itemCount from '../modules/counter.js';
 
-describe('Counter of shows', () => {
-  test('Add on new item to the API', () => {
-    expect(showCount().length).toBe(1);
-  });
+test('Add on new item to the API', () => {
+    expect(itemCount(['243', '2342', 'qwer'])).toBe(3);
 });
+

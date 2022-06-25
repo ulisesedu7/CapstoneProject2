@@ -31,7 +31,6 @@ class LikesInfo {
   
     return result;
   };
-
 }
 
 export default LikesInfo;
