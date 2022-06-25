@@ -1,7 +1,7 @@
 import itemCount from "./counter.js";
 
-const userName = document.getElementById('username');
-const userComment = document.getElementById('userComment');
+const userName = document.getElementById('user-name');
+const userComment = document.getElementById('user-comment');
 class MainComments {
   static newAppApiShow() {
     fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps', {
@@ -10,50 +10,71 @@ class MainComments {
     .then(result => console.log(result))
   }
 
-  static makeComment = async (Name, Comment, id) => {
-    const baseUrl =
-    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/comments';
-    
-    const response = await fetch(baseUrl, {
+  static makeComment (cBaseUrl, Name, Comment, id) {
+    let commentsData;
+    fetch(cBaseUrl, {
       method: 'POST',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
       body: JSON.stringify({
         item_id: id,
         username: Name,
-        comment: Comment,
+        comment: Comment,  
       }),
-    });
+      headers: {
+        'Content-type': 'application/json',
+      },
+    }).then(response => response.text())
+    .then(((result) => {commentsData = result;}));
 
-    const success = await response.text();
-    return success;
+    // Update Comments
+    this.showAllComments(cBaseUrl, id);
+
+    return commentsData;
   }
 
-  static showAllComments = async (posterId) => {
-    const baseUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/comments?item_id=${posterId}`;
-    const allComments = document.querySelector('allComments');
-    const commentHeader  = document.querySelector('commentHeader');
+  static getCommentsInfo = async (cBaseUrl, posterId) => {
+    const newerBaseUrl = `${cBaseUrl}?item_id=${posterId}`;
 
-    let data;
+    const response = await fetch(newerBaseUrl);
+    const result = await response.json();
 
-    const request = await fetch(baseUrl);
-    const response = await request.json();
-    data = response;
-  
-    if (data === null) {
-      commentHeader.innerHTML = 'Comments (0)';
-      allComments.innerHTML = 'No comments yet! Add comments';
-    } else {
-      commentHeader.innerHTML = `Comments (${itemCount(data)})`;
-      data.forEach((insight) => {
-        const li = document.createElement('li');
-        li.append(
-          `${insight.creation_date} ${insight.username} ${insight.comment}`
-        );
-        allComments.append(li);
-      });
-    }
+    return result;
+  }
+
+  static showAllComments(cBaseUrl, posterId) {
+    const commentHeader = document.getElementById('commentHeader');
+    const allComments  = document.getElementById('allComments');
+
+    const data = this.getCommentsInfo(cBaseUrl, posterId);
+
+    data.then((comments) => {
+      let tmpList;
+      if (comments.error) {
+        commentHeader.innerHTML = 'No comments yet! Add comments.';
+        tmpList = [];
+      } 
+      else {
+        while (allComments.firstChild) {
+          allComments.removeChild(allComments.firstChild);
+        }        
+        for(var i=0; i < comments.length; i +=1) {
+          this.displayComments(comments[i]);
+        }
+        
+        tmpList = comments;
+        const commentsNumber = itemCount(tmpList);
+        commentHeader.textContent = `Comments (${commentsNumber})`;
+      }
+    });
+  }
+
+  static displayComments ({creation_date, username, comment}) {
+    const allComments  = document.getElementById('allComments');
+    const newCommentElement = document.createElement('li');
+
+    newCommentElement.innerHTML = `${creation_date} ${username}: ${comment}`
+
+    allComments.appendChild(newCommentElement);
+
   }
 }
 

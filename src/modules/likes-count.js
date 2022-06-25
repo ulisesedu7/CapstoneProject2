@@ -1,5 +1,6 @@
 class LikesInfo {
   static sendLikesInfo(iBaseUrl, id) {
+    let likesData;
     fetch(iBaseUrl, {
       method: 'POST',
       body: JSON.stringify({
@@ -9,7 +10,8 @@ class LikesInfo {
         'Content-type': 'application/json',
       },
     }).then(response => response.text())
-    .then(result => console.log(result));
+    .then(((result) => {likesData = result;}));
+    return likesData;
   };
   
   static receiveLikesInfo = async (iBaseUrl) => {

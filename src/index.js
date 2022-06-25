@@ -1,9 +1,9 @@
 import './style.css';
-// import commentPopup from './modules/comment.js';
 import MainComments from './modules/comment-function.js';
 
 const baseUrl = 'https://api.tvmaze.com/shows/';
 const iBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/likes/';
+const cBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/comments';
 
 /*
 Ulises JS
@@ -60,6 +60,8 @@ cardsContainer.addEventListener('click', (e) => {
     // Send New Like 
     LikesInfo.sendLikesInfo(iBaseUrl, likeId);
 
+    // Update Likes Info
+    LikesInfo.receiveLikesInfo(iBaseUrl);
   }
 
 
@@ -72,13 +74,10 @@ cardsContainer.addEventListener('click', (e) => {
 
     const commentPopUp = document.querySelector('.modal');
     commentPopUp.classList.add('show');
-
-    // MainComments.showAllComments(posterId);
     
   }
 
 });
-
 
 // Function to Close the Modal
 modalContainer.addEventListener('click', (e) => {
@@ -99,13 +98,13 @@ modalContainer.addEventListener('click', (e) => {
       e.preventDefault();
     });
 
-    const userName = document.getElementById('username').value;
-    const userComment = document.getElementById('userComment').value;
+    const userName = document.getElementById('user-name').value;
+    const userComment = document.getElementById('user-comment').value;
     const posterId = e.target.name;
 
     if (userName !== '' && userComment !== '') {
+      MainComments.makeComment(cBaseUrl, userName, userComment, posterId);
 
-      console.log(MainComments.makeComment(userName, userComment, posterId));
     }
   }
 });

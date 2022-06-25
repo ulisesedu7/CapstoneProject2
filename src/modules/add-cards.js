@@ -1,7 +1,9 @@
-import commentPopup from './comment.js';
 import LikesInfo from './likes-count.js';
+import MainComments from './comment-function.js';
 
 const cardsSection = document.getElementById('cards-section');
+const cBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/comments';
+const iBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/likes/';
 
 class MainCards {
   static displayCards (baseUrl, number) {
@@ -17,24 +19,28 @@ class MainCards {
   }
 
   static addCards ({name, image}, number) {
-    const newCard = document.createElement('article');
-    newCard.classList.add('info-card');
+    if (name !== 'Not Found') {
+      const newCard = document.createElement('article');
+      newCard.classList.add('info-card');
 
 
-    newCard.innerHTML = 
-    `<img src="${image.medium}" class="card-image">
+      newCard.innerHTML = 
+      `<img src="${image.medium}" class="card-image">
 
-    <div class="card-title">
-      <h2 class="card-title">${name}</h2>
-      <i class="fa-regular fa-heart fa-2x like-icon"></i>
-    </div>
+      <div class="card-title">
+        <h2 class="card-title">${name}</h2>
+        <i class="fa-regular fa-heart fa-2x like-icon"></i>
+      </div>
 
-    <p class="likes-counter" title="${number}">0 likes</p>
+      <p class="likes-counter" title="${number}">0 likes</p>
 
-    <button class="card-btn comments-popup" id="${number}">Comments</button>
-    <button class="card-btn">Reservation</button>`
+      <button class="card-btn comments-popup" id="${number}">Comments</button>
+      <button class="card-btn">Reservation</button>`
 
     cardsSection.appendChild(newCard);
+
+    }
+    
   }
 
   static getPopUpInfo (baseUrl, number) {
@@ -67,17 +73,17 @@ class MainCards {
       </div>
 
       <div class="comments">
-        <h3 class="commentHeader"></h3>
-        <ul class="allComments"></ul>
+        <h3 id="commentHeader"></h3>
+        <ul id="allComments"></ul>
       </div>
 
       <form id="comment-form" class="comment-form">
         <h3 class="formHeader">Add a comment</h3>
         <div class="contact">
-          <input type="text" placeholder="Your name" id="username" required/>
+          <input type="text" placeholder="Your name" id="user-name" required/>
           <textarea
             name="comment"
-            id="userComment"
+            id="user-comment"
             cols="60"
             rows="10"
             placeholder="Your insights..."
@@ -89,6 +95,10 @@ class MainCards {
     `
 
   PopUpSpace.appendChild(commentPopUp);
+
+  // Show all Comments once the Pop Up appears
+  MainComments.showAllComments(cBaseUrl, number);
+
   }
 
 }

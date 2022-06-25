@@ -242,8 +242,8 @@ form {
   justify-content: center;
 }
 
-#username,
-#userComment {
+#user-name,
+#user-comment {
   width: 100%;
   margin: auto;
   border: solid 1px #333;
@@ -251,11 +251,11 @@ form {
   margin-bottom: 1rem;
 }
 
-#username {
+#user-name {
   padding: 4px;
 }
 
-#userComment {
+#user-comment {
   height: 6rem;
   padding: 6px;
 }
@@ -290,9 +290,17 @@ button:active {
   background: #144e75;
 }
 
-.showsHolderErr {
-  color: red;
-  height: 45vh;
-  text-align: center;
-  font-size: 1.5rem;
+#commentHeader {
+  font-size: 1.4rem;
+  margin: 0.6rem auto;
+}
+
+#allComments {
+  list-style: none;
+  margin: 0.4rem auto;
+  max-width: 70%;
+}
+
+#allComments li {
+  margin: 1.3rem auto;
 }
