@@ -1,9 +1,8 @@
-
-function showsCounter () {
-  const numberOfShows = 9;
+function showsCounter() {
+  const numberOfShows = 50;
   const tvShowsCounter = document.getElementById('tv-counter');
 
-  tvShowsCounter.innerHTML = 'TV Shows (' + numberOfShows + ')';
+  tvShowsCounter.innerHTML = `TV Shows (${numberOfShows})`;
 
   return numberOfShows;
 }

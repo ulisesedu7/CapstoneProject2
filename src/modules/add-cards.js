@@ -1,31 +1,27 @@
-import LikesInfo from './likes-count.js';
 import MainComments from './comment-function.js';
 
 const cardsSection = document.getElementById('cards-section');
 const cBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/comments';
-const iBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/likes/';
 
 class MainCards {
-  static displayCards (baseUrl, number) {
+  static displayCards(baseUrl, number) {
     this.getInformation(baseUrl, number);
   }
 
-  static getInformation (baseUrl, number) {
+  static getInformation(baseUrl, number) {
     const numberStr = number.toString();
     const newUrl = baseUrl + numberStr;
     fetch(newUrl)
-    .then(response => response.json())
-    .then(result => this.addCards(result, number));
+      .then((response) => response.json())
+      .then((result) => this.addCards(result, number));
   }
 
-  static addCards ({name, image}, number) {
+  static addCards({ name, image }, number) {
     if (name !== 'Not Found') {
       const newCard = document.createElement('article');
       newCard.classList.add('info-card');
 
-
-      newCard.innerHTML = 
-      `<img src="${image.medium}" class="card-image">
+      newCard.innerHTML = `<img src="${image.medium}" class="card-image">
 
       <div class="card-title">
         <h2 class="card-title">${name}</h2>
@@ -35,23 +31,23 @@ class MainCards {
       <p class="likes-counter" title="${number}">0 likes</p>
 
       <button class="card-btn comments-popup" id="${number}">Comments</button>
-      <button class="card-btn">Reservation</button>`
+      <button class="card-btn">Reservation</button>`;
 
-    cardsSection.appendChild(newCard);
-
+      cardsSection.appendChild(newCard);
     }
-    
   }
 
-  static getPopUpInfo (baseUrl, number) {
+  static getPopUpInfo(baseUrl, number) {
     const numberStr = number.toString();
     const newUrl = baseUrl + numberStr;
 
-    fetch(newUrl).then(response => response.json())
-    .then(result => this.addCommentPopUp(result, number));
+    fetch(newUrl).then((response) => response.json())
+      .then((result) => this.addCommentPopUp(result, number));
   }
 
-  static addCommentPopUp({name, image, type, language, status, runtime, premiered}, number) {
+  static addCommentPopUp({
+    name, image, type, language, status, runtime, premiered,
+  }, number) {
     const PopUpSpace = document.getElementById('modal-content');
     const commentPopUp = document.createElement('div');
     commentPopUp.classList.add('showType');
@@ -92,29 +88,26 @@ class MainCards {
           <button type="submit" class="btn btn-comment" name="${number}">Comment</button>
         </div>
       </form>    
-    `
+    `;
 
-  PopUpSpace.appendChild(commentPopUp);
+    PopUpSpace.appendChild(commentPopUp);
 
-  // Show all Comments once the Pop Up appears
-  MainComments.showAllComments(cBaseUrl, number);
-
-  const mainForm = document.getElementById('comment-form');
-  const userName = document.getElementById('user-name');
-  const userComment = document.getElementById('user-comment');
-
-  mainForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (userName !== '' && userComment !== '') {
-      MainComments.makeComment(cBaseUrl, userName.value, userComment.value, number);
-    }
-
+    // Show all Comments once the Pop Up appears
     MainComments.showAllComments(cBaseUrl, number);
 
-  });
+    const mainForm = document.getElementById('comment-form');
+    const userName = document.getElementById('user-name');
+    const userComment = document.getElementById('user-comment');
 
+    mainForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (userName !== '' && userComment !== '') {
+        MainComments.makeComment(cBaseUrl, userName.value, userComment.value, number);
+      }
+
+      MainComments.showAllComments(cBaseUrl, number);
+    });
   }
-
 }
 
 export default MainCards;

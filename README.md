@@ -1,4 +1,5 @@
 # Capstone Project #2
+In this project with have implemented a single-page web application that displays shows, lets you add likes, and uses a pop-up window to display more information and to add comments.
 
 ## Built With
 
@@ -11,6 +12,7 @@
 ## Live Demo
 
 - Check the live demo of my page [here]()
+- Check a live video demonstration [here]()
 
 ## Getting Started
 

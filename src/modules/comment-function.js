@@ -1,29 +1,30 @@
-import itemCount from "./counter.js";
+/* eslint-disable camelcase */
+import itemCount from './counter.js';
 
-const userName = document.getElementById('user-name');
-const userComment = document.getElementById('user-comment');
 class MainComments {
   static newAppApiShow() {
     fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps', {
       method: 'POST',
-    }).then(response => response.text())
-    .then(result => console.log(result))
+    }).then((response) => response.text())
+      .then((result) => { success = result; });
+
+    return success;
   }
 
-  static makeComment (cBaseUrl, Name, Comment, id) {
+  static makeComment(cBaseUrl, Name, Comment, id) {
     let commentsData;
     fetch(cBaseUrl, {
       method: 'POST',
       body: JSON.stringify({
         item_id: id,
         username: Name,
-        comment: Comment,  
+        comment: Comment,
       }),
       headers: {
         'Content-type': 'application/json',
       },
-    }).then(response => response.text())
-    .then(((result) => {commentsData = result;}));
+    }).then((response) => response.text())
+      .then(((result) => { commentsData = result; }));
 
     // Update Comments
     this.showAllComments(cBaseUrl, id);
@@ -42,7 +43,7 @@ class MainComments {
 
   static showAllComments(cBaseUrl, posterId) {
     const commentHeader = document.getElementById('commentHeader');
-    const allComments  = document.getElementById('allComments');
+    const allComments = document.getElementById('allComments');
 
     const data = this.getCommentsInfo(cBaseUrl, posterId);
 
@@ -51,31 +52,28 @@ class MainComments {
       if (comments.error) {
         commentHeader.innerHTML = 'No comments yet! Add comments.';
         tmpList = [];
-      } 
-      else {
+      } else {
         while (allComments.firstChild) {
           allComments.removeChild(allComments.firstChild);
-        }        
-        for(var i=0; i < comments.length; i +=1) {
+        }
+        for (let i = 0; i < comments.length; i += 1) {
           this.displayComments(comments[i]);
         }
-        
+
         tmpList = comments;
         const commentsNumber = itemCount(tmpList);
         commentHeader.textContent = `Comments (${commentsNumber})`;
       }
     });
-
   }
 
-  static displayComments ({creation_date, username, comment}) {
-    const allComments  = document.getElementById('allComments');
+  static displayComments({ creation_date, username, comment }) {
+    const allComments = document.getElementById('allComments');
     const newCommentElement = document.createElement('li');
 
-    newCommentElement.innerHTML = `${creation_date} ${username}: ${comment}`
+    newCommentElement.innerHTML = `${creation_date} ${username}: ${comment}`;
 
     allComments.appendChild(newCommentElement);
-
   }
 }
 

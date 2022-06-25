@@ -1,18 +1,18 @@
 import './style.css';
 import MainComments from './modules/comment-function.js';
 
-const baseUrl = 'https://api.tvmaze.com/shows/';
-const iBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/likes/';
-const cBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/comments';
-
 /*
 Ulises JS
 */
-// Imports 
+// Imports
 import MainCards from './modules/add-cards.js';
 import LikesInfo from './modules/likes-count.js';
 import galaxyIcon from './assets/images/galaxyicon.png';
 import showsCounter from './modules/shows-counter.js';
+
+const baseUrl = 'https://api.tvmaze.com/shows/';
+const iBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/likes/';
+const cBaseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/vi9NdZdiCp9O1MxDwJQW/comments';
 
 // Const from DOM
 const cardsContainer = document.getElementById('cards-section');
@@ -21,19 +21,19 @@ const mainLogo = document.getElementById('main-logo');
 const modalContainer = document.getElementById('myModal');
 
 // Load first cards function
-function loadAllCards () {
-  const numberOfShows = 9;
-  for(var i=0; i < numberOfShows; i++) {
-    let number = i+6;
-    MainCards.displayCards(baseUrl, number)
-  } 
+function loadAllCards() {
+  const numberOfShows = 50;
+  for (let i = 0; i < numberOfShows; i += 1) {
+    const number = i + 6;
+    MainCards.displayCards(baseUrl, number);
+  }
 
   showsCounter();
 }
 
 document.addEventListener('DOMContentLoaded', loadAllCards);
 
-// Display Likes 
+// Display Likes
 document.addEventListener('DOMContentLoaded', LikesInfo.receiveLikesInfo(iBaseUrl));
 
 // Insert Main Logo Icon
@@ -44,38 +44,31 @@ mainLogo.appendChild(myLogo);
 
 // Function to change heart color
 cardsContainer.addEventListener('click', (e) => {
-  
   if (e.target.classList.contains('fa-solid') === true) {
     e.target.classList.remove('fa-solid');
     e.target.classList.add('fa-regular');
-    
-  } 
-  else if (e.target.classList.contains('fa-regular') === true) {
-    let likeId = e.target.parentElement.nextElementSibling.title;
+  } else if (e.target.classList.contains('fa-regular') === true) {
+    const likeId = e.target.parentElement.nextElementSibling.title;
 
     e.target.classList.remove('fa-regular');
     e.target.classList.add('fa-solid');
 
-    // Send New Like 
+    // Send New Like
     LikesInfo.sendLikesInfo(iBaseUrl, likeId);
 
     // Update Likes Info
     LikesInfo.receiveLikesInfo(iBaseUrl);
   }
 
-
   // Function to display Modal Window
   if (e.target.classList.contains('comments-popup') === true) {
-    
     const posterId = e.target.id;
 
     MainCards.getPopUpInfo(baseUrl, posterId);
 
     const commentPopUp = document.querySelector('.modal');
     commentPopUp.classList.add('show');
-    
   }
-
 });
 
 // Function to Close the Modal
@@ -87,7 +80,6 @@ modalContainer.addEventListener('click', (e) => {
     const showType = document.querySelector('.showType');
 
     showType.remove();
-
   }
 
   if (e.target.classList.contains('btn-comment') === true) {
