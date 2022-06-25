@@ -3,6 +3,7 @@ import itemCount from './counter.js';
 
 class MainComments {
   static newAppApiShow() {
+    let success;
     fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps', {
       method: 'POST',
     }).then((response) => response.text())

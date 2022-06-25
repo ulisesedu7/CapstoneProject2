@@ -266,13 +266,13 @@ form {
   font-style: normal;
   font-variant: normal;
   text-transform: none;
-  background-image: 
+  background-image:
     linear-gradient(
       to right,
       rgb(28, 110, 164) 0%,
       rgb(35, 136, 203) 50%,
       rgb(20, 78, 117) 100%
-  );
+    );
   box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
   border: 2px solid rgb(28, 110, 164);
 }
