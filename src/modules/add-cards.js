@@ -59,12 +59,12 @@ class MainCards {
       <h2 class="show-title">${name}</h2>
       <div class="show-details">
         <ul class="show-details-items">
-        <li>Name: ${name}</li>
-        <li>Type: ${type}</li>
-        <li>Language: ${language}</li>
-        <li>Status: ${status}</li>
-        <li>Runtime: ${runtime}</li>
-        <li>Premiered: ${premiered}</li>
+          <li>Name: ${name}</li>
+          <li>Type: ${type}</li>
+          <li>Language: ${language}</li>
+          <li>Status: ${status}</li>
+          <li>Runtime: ${runtime}</li>
+          <li>Premiered: ${premiered}</li>
         </ul>
       </div>
 

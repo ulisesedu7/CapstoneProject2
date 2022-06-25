@@ -12,7 +12,7 @@ In this project with have implemented a single-page web application that display
 ## Live Demo
 
 - Check the live demo of my page [here]()
-- Check a live video demonstration [here]()
+- Check a live video demonstration [here](https://drive.google.com/file/d/19e7uoclDBs4jyZ7ZCuFyhWfWnJ0fyTK0/view?usp=sharing)
 
 ## Getting Started
 
@@ -22,7 +22,7 @@ To get a local copy up and running follow these simple example steps.
 
 Modern web browser with Javascript enabled
 
-Run: `Git Clone + 'URL of project'`
+Run: `Git Clone + 'https://github.com/ulisesedu7/CapstoneProject2.git'`
 
 ## Authors
 
